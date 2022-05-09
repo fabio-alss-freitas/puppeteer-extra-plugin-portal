@@ -170,6 +170,14 @@ export default class Runner {
       command: ProtocolCommands['Input.dispatchKeyEvent'],
       data,
     });
+
+    if (event.type == "keydown" && (event.ctrlKey || event.metaKey) && event.keyCode == 67) {
+      window?.parent.postMessage("Ctrl+C", "*");
+    } else if ((event.ctrlKey || event.metaKey) && event.keyCode == 86) {
+      window?.parent.postMessage("Ctrl+V", "*");
+    } else if ((event.ctrlKey || event.metaKey) && event.keyCode == 88) {
+      window?.parent.postMessage("Ctrl+X", "*");
+    } 
   };
 
   onScreencastFrame = (data: string) => {
